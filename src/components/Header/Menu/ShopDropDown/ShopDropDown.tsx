@@ -7,7 +7,7 @@ import {
 } from 'material-ui-popup-state/hooks'
 import {Grid} from "@material-ui/core";
 import styled from "styled-components";
-import ShopDDSubmenu from "./ShopDDSubmenu";
+import ShopDDCategory from "./ShopDDCategory";
 import bestSellersImg from '../../../../img/banner-shopDD.jpg'
 
 class Category {
@@ -55,11 +55,11 @@ const ShopDropDown = () => {
             <StyledDDContainer container>
                 {allCategories.map((category, i)=>(
                     <Grid item xs>
-                        <ShopDDSubmenu key={'cat'+i} category={category}/>
+                        <ShopDDCategory key={'cat'+i} category={category}/>
                     </Grid>
                 ))}
                 <Grid item xs>
-                    <img src={bestSellersImg}/>
+                    <StyledImg src={bestSellersImg} alt='best sellers'/>
                 </Grid>
             </StyledDDContainer>
 
@@ -68,6 +68,11 @@ const ShopDropDown = () => {
     )
 };
 export default ShopDropDown;
+
+const StyledImg = styled.img`
+  width: 100%;
+  height: auto;
+`
 
 const StyledDDContainer = styled(Grid)`
   padding: 30px 30px 30px 0;

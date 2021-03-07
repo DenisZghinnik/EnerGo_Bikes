@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import {styledLink} from "../../../css vars/linkStyles";
 
-type ShopDDSubmenuProps = {
+type Props = {
     category: any
 };
-const ShopDDSubmenu = (props: ShopDDSubmenuProps) => {
+const ShopDDCategory = (props: Props) => {
 
     return (
         <SubmenuContainer>
@@ -27,10 +27,10 @@ const ShopDDSubmenu = (props: ShopDDSubmenuProps) => {
         </SubmenuContainer>
     );
 };
-export default ShopDDSubmenu;
+export default ShopDDCategory;
 
 const SubmenuContainer = styled.div`
-  margin: 0 40px 20px 40px;
+  margin: 0 30px 20px 30px;
   ul{
     list-style: none;
   }

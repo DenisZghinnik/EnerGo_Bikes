@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Logo from "./Logo/Logo";
 import {Grid} from "@material-ui/core";
 import Menu from "./Menu/Menu";
+import Nav from "./Nav/Nav";
 
 
 const Header = () => {
@@ -11,13 +12,12 @@ const Header = () => {
         <HeaderContainer container justify='center'>
             <Grid justify='flex-start' alignItems='center' container item xs>
                 <Menu/>
-
             </Grid>
             <Grid justify='center' container item xs>
                 <Logo/>
             </Grid>
-            <Grid justify='flex-end' container item xs>
-                <Logo/>
+            <Grid justify='flex-end' container alignItems='center' item xs>
+                <Nav/>
             </Grid>
         </HeaderContainer>
     );
