@@ -31,14 +31,16 @@ const MiniCartContent = (props: Props) => {
             <StyledItemsContainer>
                 {props.items.map((a,i)=> <MiniCartItem key={'product'+i} remove={props.remove} item={a}/>)}
             </StyledItemsContainer>
-            <StyledTotalPrice>
-                <span className='total'>Total:</span>
-                <span className='totalPrice'>{`$${totalPrice}.00`}</span>
-            </StyledTotalPrice>
-            <StyledButtonsContainer>
-                <CssSubmitButton className='button-viewCart'>view cart</CssSubmitButton>
-                <CssSubmitButton>check out</CssSubmitButton>
-            </StyledButtonsContainer>
+            <div className='footer'>
+                <StyledTotalPrice>
+                    <span className='total'>Total:</span>
+                    <span className='totalPrice'>{`$${totalPrice}.00`}</span>
+                </StyledTotalPrice>
+                <StyledButtonsContainer>
+                    <CssSubmitButton className='button-viewCart'>view cart</CssSubmitButton>
+                    <CssSubmitButton>check out</CssSubmitButton>
+                </StyledButtonsContainer>
+            </div>
         </StyledContainer>
     );
 };
@@ -53,6 +55,7 @@ const StyledButtonsContainer = styled.div`
     .button-viewCart{
       background-color: #2a2a2a;
     }
+  
 `
 const StyledTotalPrice = styled.div`
     height: 60px;
@@ -109,4 +112,13 @@ const StyledContainer = styled.div`
     height: 100%;
     width: 380px;
     background-color: #f7f7f7;
+  .footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+   
+  @media (max-width: 500px){
+    width: 100%;
+  }
 `;

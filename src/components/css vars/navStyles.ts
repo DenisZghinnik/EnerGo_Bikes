@@ -9,4 +9,7 @@ export const navStyle = css`
   &:hover{
     color: ${greyHover};
   }
+  @media (max-width: 500px){
+    font-size: 30px;
+  }
 `

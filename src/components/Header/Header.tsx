@@ -13,7 +13,7 @@ const Header = () => {
             <Grid justify='flex-start' alignItems='center' container item xs>
                 <Menu/>
             </Grid>
-            <Grid justify='center' container item xs>
+            <Grid justify='center' alignItems='center' container item xs>
                 <Logo/>
             </Grid>
             <Grid justify='flex-end' container alignItems='center' item xs>

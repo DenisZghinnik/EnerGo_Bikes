@@ -15,6 +15,9 @@ export default Logo;
 const StyledLink = styled(NavLink)`
   display: block;
   width: 220px;
+  @media (max-width: 500px){
+    width: 150px;
+  }
 `
 const StyledImg = styled.img`
   width: 100%;

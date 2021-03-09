@@ -11,9 +11,9 @@ import { useFormik } from 'formik';
 import {emailValidation, passwordValidation} from "../../../defaultComponents/form_validators";
 
 type Props = {
-    handleOpenReset:()=>void
-    handleOpenReg:()=>void
-    handleClose:()=>void
+    handleOpenReset?:()=>void
+    handleOpenReg?:()=>void
+    handleClose?:()=>void
 };
 const LoginForm = (props: Props) => {
     const formik = useFormik({
@@ -23,7 +23,6 @@ const LoginForm = (props: Props) => {
         },
         validationSchema: emailValidation.concat(passwordValidation),
         onSubmit: (values) => {
-            props.handleClose()
             alert(JSON.stringify(values, null, 2));
         },
     });

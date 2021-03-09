@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import {Dialog} from "@material-ui/core";
+import {Dialog, Hidden} from "@material-ui/core";
 import {navStyle} from "../../../css vars/navStyles";
 import LoginForm from "./LoginForm";
 import PasswordResetForm from "./PasswordResetForm";
@@ -27,16 +27,20 @@ const Login = () => {
     const handleCloseReg = () => {setOpenRegForm(false)};
     return (
         <>
-            <StyledLoginIcon onClick={handleOpen}/>
+            <Hidden mdDown>
+                <StyledLoginIcon onClick={handleOpen}/>
 
-            <StyledDialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                {!openResetForm&&!openRegForm
-                    ? <LoginForm handleOpenReset={handleOpenReset} handleOpenReg={handleOpenReg} handleClose={handleClose}/>
-                    : openResetForm
-                        ? <PasswordResetForm handleCloseReset={handleCloseReset} handleClose={handleClose}/>
-                        : <RegisterForm handleCloseReg={handleCloseReg} handleClose={handleClose}/>
-                }
-            </StyledDialog>
+                <StyledDialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    {!openResetForm && !openRegForm
+                        ? <LoginForm handleOpenReset={handleOpenReset} handleOpenReg={handleOpenReg}
+                                     handleClose={handleClose}/>
+                        : openResetForm
+                            ? <PasswordResetForm handleCloseReset={handleCloseReset} handleClose={handleClose}/>
+                            : <RegisterForm handleCloseReg={handleCloseReg} handleClose={handleClose}/>
+                    }
+                </StyledDialog>
+            </Hidden>
+
         </>
     );
 };

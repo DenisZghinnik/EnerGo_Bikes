@@ -13,7 +13,7 @@ import {emailValidation, passwordValidation} from "../../../defaultComponents/fo
 
 type Props = {
     handleCloseReg:()=>void
-    handleClose:()=>void
+    handleClose?:()=>void
 };
 const RegisterForm = (props: Props) => {
 
@@ -24,7 +24,6 @@ const RegisterForm = (props: Props) => {
         },
         validationSchema: emailValidation.concat(passwordValidation),
         onSubmit: (values) => {
-            props.handleClose()
             alert(JSON.stringify(values, null, 2));
         },
     });

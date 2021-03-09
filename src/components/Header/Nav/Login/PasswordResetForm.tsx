@@ -13,7 +13,7 @@ import {emailValidation} from "../../../defaultComponents/form_validators";
 
 type Props = {
     handleCloseReset:()=>void
-    handleClose:()=>void
+    handleClose?:()=>void
 };
 const PasswordResetForm = (props: Props) => {
 
@@ -23,7 +23,6 @@ const PasswordResetForm = (props: Props) => {
         },
         validationSchema: emailValidation,
         onSubmit: (values) => {
-            props.handleClose()
             alert(JSON.stringify(values, null, 2));
         },
     });
