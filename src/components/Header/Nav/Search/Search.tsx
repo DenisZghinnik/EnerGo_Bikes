@@ -2,20 +2,20 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import {Input, InputAdornment, Popover} from "@material-ui/core";
-import {navStyle} from "../../../css vars/navStyles";
-import {grey} from "../../../css vars/colors";
-type Props = {};
-const Search = (props: Props) => {
+import {navStyle} from "../../../../css vars/navStyles";
+import {grey} from "../../../../css vars/colors";
+
+const Search = () => {
     const [anchorEl, setAnchorEl] = useState<SVGSVGElement | null>(null);
     const handleClick = (event: React.MouseEvent<SVGSVGElement>) => {setAnchorEl(event.currentTarget)}
     const handleClose = () => {
         setAnchorEl(null)
-        setSearchVal(null)
+        setSearchVal('')
     }
     const open = !!anchorEl;
     const id = open ? 'search-popover' : undefined;
 
-    const [searchVal, setSearchVal] = useState<string|null>(null);
+    const [searchVal, setSearchVal] = useState<string>('');
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
         setSearchVal(e.target.value);
     }

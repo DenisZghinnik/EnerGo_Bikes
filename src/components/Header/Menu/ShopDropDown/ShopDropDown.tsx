@@ -40,6 +40,7 @@ const AccessoriesSubCategories = ['Displays','Helmets', 'Gloves', 'Glasses','Oth
 const Accessories = new Category('Accessories', '/accessories', AccessoriesSubCategories);
 
 const allCategories = [bikes, kits, engines, batteries, Accessories];
+
 const ShopDropDown = () => {
     const popupState = usePopupState({variant: 'popover', popupId: 'shopMenu'});
 
@@ -54,8 +55,8 @@ const ShopDropDown = () => {
         >
             <StyledDDContainer container>
                 {allCategories.map((category, i)=>(
-                    <Grid item xs>
-                        <ShopDDCategory key={'cat'+i} category={category}/>
+                    <Grid key={'cat'+i} item xs>
+                        <ShopDDCategory category={category}/>
                     </Grid>
                 ))}
                 <Grid item xs>

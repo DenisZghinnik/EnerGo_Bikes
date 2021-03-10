@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
-import {hoveredGray} from "../css vars/linkStyles";
+import {hoveredGray} from "../../css vars/linkStyles";
 export type ProductItem = {
         img: string,
         link: string

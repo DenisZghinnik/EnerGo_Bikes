@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ShopDropDown from "./ShopDropDown/ShopDropDown";
-import {styledLink} from "../../css vars/linkStyles";
+import {styledLink} from "../../../css vars/linkStyles";
 import { NavLink } from 'react-router-dom';
 
 type Props = {};
@@ -20,7 +20,7 @@ const MenuList = (props: Props) => {
 export default React.memo(MenuList);
 export const StyledMenuLink = styled(NavLink)`
   ${styledLink};
-  font-size: 16px;
+  font-size: 15px;
   margin: 0 15px;
   font-weight: 900;
   

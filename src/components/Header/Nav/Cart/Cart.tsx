@@ -1,9 +1,9 @@
 import React from 'react';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import styled from "styled-components";
-import {navStyle} from "../../../css vars/navStyles";
+import {navStyle} from "../../../../css vars/navStyles";
 import {Badge, Drawer} from "@material-ui/core";
-import {greyHover} from "../../../css vars/colors";
+import {greyHover} from "../../../../css vars/colors";
 import CartDrawerContent from "./CartDrawerContent";
 import itemImg1 from '../../../../img/products/pro25_small.jpg'
 import itemImg2 from '../../../../img/products/pro36_small.jpg'
@@ -48,6 +48,7 @@ const Cart = () => {
     const [items, setItems] = React.useState(itemsArray);
     const removeItemFromCart = (id:number) => {setItems(items.filter(a=>a.id!==id))};
     const totalCount = items.length;
+
     return (
         <>
             <StyledBadge onClick={handleOpen} showZero={false} badgeContent={totalCount}>

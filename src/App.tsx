@@ -1,14 +1,22 @@
 import React from 'react';
 import {createGlobalStyle} from "styled-components";
 import Header from "./components/Header/Header";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Profile from "./components/Profile/Profile";
+import Home from "./components/Home/Home";
 function App() {
     return (
         <Router>
-            <div>
-                <GlobalStyle/>
-                <Header/>
-            </div>
+            <GlobalStyle/>
+            <Header/>
+            <Switch>
+                <Route path='/profile'>
+                    <Profile/>
+                </Route>
+                <Route path='/'>
+                    <Home/>
+                </Route>
+            </Switch>
         </Router>
     );
 }

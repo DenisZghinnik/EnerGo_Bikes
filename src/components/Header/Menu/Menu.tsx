@@ -1,18 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import ShopDropDown from "./ShopDropDown/ShopDropDown";
-import {styledLink} from "../../css vars/linkStyles";
 import {Drawer, Hidden} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
-import {navStyle} from "../../css vars/navStyles";
+import {navStyle} from "../../../css vars/navStyles";
 import MenuDrawerContent from "./MenuDrawerContent/MenuDrawerContent";
 import MenuList from "./MenuList";
+import {useDispatch} from "react-redux";
+import {authReducerActions} from "../../../redux/reducers/authReducer";
+import {withOpenFunc, WithOpenFuncProps} from "../../../hoc/withOpenFunc";
 
-const Menu = () => {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {setOpen(true)};
-    const handleClose = () => {setOpen(false)};
+
+const Menu = (props:WithOpenFuncProps) => {
+    const dispatch=useDispatch();
+    const {open, handleOpen, handleClose} = props;
+    const handleClickClose = () => {
+        handleClose();
+        dispatch(authReducerActions.clearIsLoginFailed())
+    };
+
     return (
         <>
             <Hidden mdDown>
@@ -23,15 +28,15 @@ const Menu = () => {
 
             <Hidden lgUp>
                 <StyledIcon onClick={handleOpen}/>
-
-                <Drawer anchor='left' open={open} onClose={handleClose}>
-                    <MenuDrawerContent handleClose={handleClose}/>
+                
+                <Drawer anchor='left' open={open} onClose={handleClickClose}>
+                    <MenuDrawerContent handleCloseDrawer={handleClickClose}/>
                 </Drawer>
             </Hidden>
         </>
     );
 };
-export default Menu;
+export default withOpenFunc(Menu);
 
 const StyledIcon = styled(MenuIcon)`&&{
   ${navStyle};

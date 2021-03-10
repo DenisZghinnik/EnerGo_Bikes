@@ -1,50 +1,35 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import {Dialog, Hidden} from "@material-ui/core";
-import {navStyle} from "../../../css vars/navStyles";
-import LoginForm from "./LoginForm";
-import PasswordResetForm from "./PasswordResetForm";
-import RegisterForm from "./RegisterForm";
+import {navStyle} from "../../../../css vars/navStyles";
+import {withOpenFunc, WithOpenFuncProps} from "../../../../hoc/withOpenFunc";
+import AuthContainer from "../../../defaultComponents/Auth/AuthContainer";
+import {useDispatch} from "react-redux";
+import {authReducerActions} from "../../../../redux/reducers/authReducer";
 
-const Login = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {setOpen(true)};
-    const handleClose = () => {
-        setOpen(false);
-        setTimeout(()=> {
-            handleCloseReset();
-            handleCloseReg();
-        }, 300);
+const Login = (props: WithOpenFuncProps) => {
+    const dispatch=useDispatch();
+    const {open, handleClose, handleOpen} = props;
+    const handleClickClose = () => {
+        handleClose();
+        dispatch(authReducerActions.clearIsLoginFailed())
     };
-
-    const [openResetForm, setOpenResetForm] = useState(false);
-    const handleOpenReset = () => {setOpenResetForm(true)};
-    const handleCloseReset = () => {setOpenResetForm(false)};
-
-    const [openRegForm, setOpenRegForm] = useState(false);
-    const handleOpenReg = () => {setOpenRegForm(true)};
-    const handleCloseReg = () => {setOpenRegForm(false)};
     return (
         <>
             <Hidden mdDown>
                 <StyledLoginIcon onClick={handleOpen}/>
 
-                <StyledDialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                    {!openResetForm && !openRegForm
-                        ? <LoginForm handleOpenReset={handleOpenReset} handleOpenReg={handleOpenReg}
-                                     handleClose={handleClose}/>
-                        : openResetForm
-                            ? <PasswordResetForm handleCloseReset={handleCloseReset} handleClose={handleClose}/>
-                            : <RegisterForm handleCloseReg={handleCloseReg} handleClose={handleClose}/>
-                    }
+                <StyledDialog open={open} onClose={handleClickClose} aria-labelledby="form-dialog-title">
+                    <AuthContainer handleCloseDrawer={handleClose}/>
                 </StyledDialog>
             </Hidden>
 
         </>
     );
 };
-export default React.memo(Login);
+
+export default React.memo(withOpenFunc(Login));
 
 const StyledDialog = styled(Dialog)`
   .MuiDialog-paper{

@@ -1,5 +1,5 @@
 import {Button, TextField, withStyles} from "@material-ui/core";
-import {grey, greyHover} from "../css vars/colors";
+import {grey, greyHover} from "../../css vars/colors";
 import {css} from "styled-components";
 import {ChangeEvent} from "react";
 

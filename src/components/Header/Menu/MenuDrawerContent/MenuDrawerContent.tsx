@@ -2,61 +2,48 @@ import React from 'react';
 import styled from 'styled-components';
 import {CssSubmitButton} from "../../../defaultComponents/form_elements";
 import SubjectIcon from '@material-ui/icons/Subject';
-import {grey} from "../../../css vars/colors";
+import {grey} from "../../../../css vars/colors";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {StyledMenuLink} from "../MenuList";
-import LoginForm from "../../Nav/Login/LoginForm";
-import RegisterForm from "../../Nav/Login/RegisterForm";
-import PasswordResetForm from "../../Nav/Login/PasswordResetForm";
 import CloseIcon from '@material-ui/icons/Close';
+import {withOpenFunc, WithOpenFuncProps} from "../../../../hoc/withOpenFunc";
+import AuthContainer from "../../../defaultComponents/Auth/AuthContainer";
 
 type Props = {
-    handleClose:()=>void
+    handleCloseDrawer:()=>void
 };
-const MenuDrawerContent = (props: Props) => {
-    const [openLogin, setOpenLogin] = React.useState(false);
-    const setOpen = () => {setOpenLogin(true)};
-    const setClose = () => {setOpenLogin(false)};
 
+const MenuDrawerContent = (props: Props & WithOpenFuncProps) => {
 
-    const [openResetForm, setOpenResetForm] = React.useState(false);
-    const handleOpenReset = () => {setOpenResetForm(true)};
-    const handleCloseReset = () => {setOpenResetForm(false)};
+    const {open, handleOpen, handleClose} = props;
 
-    const [openRegForm, setOpenRegForm] = React.useState(false);
-    const handleOpenReg = () => {setOpenRegForm(true)};
-    const handleCloseReg = () => {setOpenRegForm(false)};
     return (
         <StyledContainer>
             <div>
-                <StyledButton className={openLogin?'disActive':''} onClick={setClose}>
+                <StyledButton className={open?'disActive':''} onClick={handleClose}>
                     <SubjectIcon/>
                     Menu
                 </StyledButton>
-                <StyledButton className={!openLogin?'disActive':''} onClick={setOpen}>
+                <StyledButton className={!open?'disActive':''} onClick={handleOpen}>
                     <AccountCircleIcon/>
                     Login
                 </StyledButton>
             </div>
 
             <div className='content'>
-                {!openLogin
-                ? <StyledMenuList>
-                <StyledMenuLink to='/home'>Home</StyledMenuLink>
-                <StyledMenuLink to='/shop'>Shop</StyledMenuLink>
-                <StyledMenuLink to='/about-us'>About Us</StyledMenuLink>
-                <StyledMenuLink to='/blog'>Blog</StyledMenuLink>
-                <StyledMenuLink to='/contact'>Contact</StyledMenuLink>
-            </StyledMenuList>
-                : !openResetForm && !openRegForm
-                        ? <LoginForm handleOpenReset={handleOpenReset} handleOpenReg={handleOpenReg}/>
-                        : openResetForm
-                            ? <PasswordResetForm handleCloseReset={handleCloseReset}/>
-                            : <RegisterForm handleCloseReg={handleCloseReg}/>}
+                {!open
+                    ? <StyledMenuList>
+                        <StyledMenuLink to='/home'>Home</StyledMenuLink>
+                        <StyledMenuLink to='/shop'>Shop</StyledMenuLink>
+                        <StyledMenuLink to='/about-us'>About Us</StyledMenuLink>
+                        <StyledMenuLink to='/blog'>Blog</StyledMenuLink>
+                        <StyledMenuLink to='/contact'>Contact</StyledMenuLink>
+                    </StyledMenuList>
+                    : <AuthContainer handleCloseDrawer={props.handleCloseDrawer}/>}
             </div>
 
             <div className='footer'>
-                <CssSubmitButton onClick={props.handleClose}>
+                <CssSubmitButton>
                     <CloseIcon/>
                     Close
                 </CssSubmitButton>
@@ -65,7 +52,10 @@ const MenuDrawerContent = (props: Props) => {
         </StyledContainer>
     );
 };
-export default React.memo(MenuDrawerContent);
+
+
+export default React.memo(withOpenFunc(MenuDrawerContent));
+
 const StyledMenuList = styled.nav`&&{
   a{
     display: block;

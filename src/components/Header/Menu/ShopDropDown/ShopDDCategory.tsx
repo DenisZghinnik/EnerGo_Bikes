@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import {styledLink} from "../../../css vars/linkStyles";
+import {styledLink} from "../../../../css vars/linkStyles";
 
 type Props = {
     category: any

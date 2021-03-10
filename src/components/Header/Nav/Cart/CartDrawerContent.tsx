@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
-import {hoveredGray} from "../../../css vars/linkStyles";
+import {hoveredGray} from "../../../../css vars/linkStyles";
 import MiniCartItem, {ProductItem} from "../../../defaultComponents/miniCart_item";
-import {greyHover} from "../../../css vars/colors";
+import {greyHover} from "../../../../css vars/colors";
 import {CssSubmitButton} from "../../../defaultComponents/form_elements";
 
 type Props = {
