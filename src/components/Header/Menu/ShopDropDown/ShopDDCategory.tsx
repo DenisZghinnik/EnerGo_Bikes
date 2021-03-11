@@ -2,12 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import {styledLink} from "../../../../css vars/linkStyles";
+import {HotBadge, NewBadge} from "../../../defaultComponents/Badges";
 
 type Props = {
     category: any
 };
 const ShopDDCategory = (props: Props) => {
-
+    const hotPromo = ['Tracer', 'Extreme', '36v'];
+    const newPromo = ['Gloves', '1000w'];
     return (
         <SubmenuContainer>
             <h5>
@@ -16,11 +18,23 @@ const ShopDDCategory = (props: Props) => {
                 </StyledTitleLink>
             </h5>
             <ul>
-                {props.category.subCategories.map((link:any,i:any)=>(
-                    <li key={'link'+i}>
-                        <StyledLink to={'/shop' + link.link}>{link.title}</StyledLink>
-                    </li>
-                ))}
+                {props.category.subCategories.map((link:any,i:any)=> (
+                        <li key={'link' + i}>
+                            {hotPromo.includes(link.title)
+                                ? <HotBadge badgeContent="hot">
+                                    <StyledLink to={'/shop' + link.link}>{link.title}</StyledLink>
+                                </HotBadge>
+                                : newPromo.includes(link.title)
+                                    ? <NewBadge badgeContent="new">
+                                        <StyledLink to={'/shop' + link.link}>{link.title}</StyledLink>
+                                    </NewBadge>
+                                    : <StyledLink to={'/shop' + link.link}>{link.title}</StyledLink>
+                            }
+
+
+                        </li>
+                    )
+                )}
 
 
             </ul>

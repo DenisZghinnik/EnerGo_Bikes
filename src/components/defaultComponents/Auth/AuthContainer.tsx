@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {withAuthFunc, WithAuthProps} from "../../../hoc/authHoc";
-import LoginForm from "../../Header/Nav/Login/LoginForm";
-import PasswordResetForm from "../../Header/Nav/Login/PasswordResetForm";
-import RegisterForm from "../../Header/Nav/Login/RegisterForm";
+import LoginForm from "./LoginForm";
+import PasswordResetForm from "./PasswordResetForm";
+import RegisterForm from "./RegisterForm";
+import {useSelector} from "react-redux";
+import {getIsAuthorized, getIsLoginFetching} from "../../../selectors/selectors";
+import {Redirect} from "react-router";
 
 
 type Props = {
@@ -10,9 +13,13 @@ type Props = {
 };
 
 const AuthContainer = (props: Props & WithAuthProps) => {
+    const isFetching = useSelector((getIsLoginFetching));
+    const isAuthorized = useSelector(getIsAuthorized);
 
     const {openResetForm, handleOpenReset, handleCloseReset,
            openRegForm, handleOpenReg, handleCloseReg} = props;
+
+    useEffect(() => {if (isAuthorized) props.handleCloseDrawer()});
 
     const handleClickClose = () => {
         props.handleCloseDrawer();
@@ -22,14 +29,25 @@ const AuthContainer = (props: Props & WithAuthProps) => {
         }, 300);
     };
 
+    if (isAuthorized) return <Redirect to='/profile'/>;
     return (
         <>
             {!openResetForm && !openRegForm
-                ? <LoginForm handleOpenReset={handleOpenReset} handleOpenReg={handleOpenReg}
+                ? <LoginForm isAuthorized={isAuthorized}
+                             isFetching={isFetching}
+                             handleOpenReset={handleOpenReset}
+                             handleOpenReg={handleOpenReg}
                              handleClose={handleClickClose}/>
                 : openResetForm
-                    ? <PasswordResetForm handleCloseReset={handleCloseReset} handleClose={handleClickClose}/>
-                    : <RegisterForm handleCloseReg={handleCloseReg} handleClose={handleClickClose}/>
+
+                    ? <PasswordResetForm isFetching={isFetching}
+                                         handleCloseReset={handleCloseReset}
+                                         handleClose={handleClickClose}/>
+
+                    : <RegisterForm isAuthorized={isAuthorized}
+                                    isFetching={isFetching}
+                                    handleCloseReg={handleCloseReg}
+                                    handleClose={handleClickClose}/>
             }
         </>
     );

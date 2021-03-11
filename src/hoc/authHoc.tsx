@@ -1,17 +1,25 @@
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {authReducerActions} from "../redux/reducers/authReducer";
 
 
 export const withAuthFunc = (Component:any) => {
 
     return (props:any)=>{
-
+        const dispatch = useDispatch();
         const [openResetForm, setOpenResetForm] = useState(false);
         const handleOpenReset = () => {setOpenResetForm(true)};
-        const handleCloseReset = () => {setOpenResetForm(false)};
+        const handleCloseReset = () => {
+            dispatch(authReducerActions.clearMessages())
+            setOpenResetForm(false)
+        };
 
         const [openRegForm, setOpenRegForm] = useState(false);
         const handleOpenReg = () => {setOpenRegForm(true)};
-        const handleCloseReg = () => {setOpenRegForm(false)};
+        const handleCloseReg = () => {
+            dispatch(authReducerActions.clearMessages())
+            setOpenRegForm(false)
+        };
 
         return <Component {...props}
                           openResetForm={openResetForm}

@@ -1,31 +1,29 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Grid } from '@material-ui/core';
 import {
     CssAdditionalButton,
     CssSubmitButton,
     textInputCreator
-} from '../../../defaultComponents/form_elements';
-import logo from "../../../../img/logo.png";
+} from '../form_elements';
+import logo from "../../../img/logo.png";
 import { useFormik } from 'formik';
-import {emailValidation, passwordValidation} from "../../../defaultComponents/form_validators";
-import {loginRequest} from "../../../../redux/reducers/authReducer";
+import {emailValidation, passwordValidation} from "../form_validators";
+import {loginRequest} from "../../../redux/reducers/authReducer";
 import {useDispatch, useSelector} from 'react-redux';
-import {getIsAuthorized, getIsLoginFailed, getIsLoginFetching} from "../../../../selectors/selectors";
-import {Redirect} from "react-router";
+import {getIsLoginFailed} from "../../../selectors/selectors";
+import { Alert } from '@material-ui/lab';
 
 type Props = {
     handleOpenReset:()=>void
     handleOpenReg:()=>void
     handleClose:()=>void
+    isFetching: boolean
+    isAuthorized: boolean
 };
 const LoginForm = (props: Props) => {
     const dispatch = useDispatch();
-    const isFetching = useSelector(getIsLoginFetching);
     const isLoginFailed = useSelector(getIsLoginFailed);
-    const isAuthorized = useSelector(getIsAuthorized);
-
-    useEffect(() => {if (isAuthorized) props.handleClose()});
 
     const formik = useFormik({
         initialValues: {
@@ -38,17 +36,16 @@ const LoginForm = (props: Props) => {
         },
     });
 
-    if (isAuthorized) return <Redirect to='/profile'/>;
-
     return (
         <>
             <StyledLogo src={logo} alt={'logo'}/>
 
             <StyledForm noValidate onSubmit={formik.handleSubmit}>
                 <h4>Great to have you back!</h4>
-                {isLoginFailed&&<div className={'error'}>
+
+                {isLoginFailed && <Alert severity='error'>
                     Wrong email or password!
-                </div>}
+                </Alert>}
                 {textInputCreator('email',
                      true,
                      formik.values.email,
@@ -63,7 +60,7 @@ const LoginForm = (props: Props) => {
                      formik.touched.password,
                      formik.errors.password
                  )}
-                <CssSubmitButton disabled={isFetching} type="submit" fullWidth variant="contained">
+                <CssSubmitButton disabled={props.isFetching} type="submit" fullWidth variant="contained">
                     log in
                 </CssSubmitButton>
                 <Grid container>

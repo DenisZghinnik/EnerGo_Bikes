@@ -13,8 +13,9 @@ const Login = (props: WithOpenFuncProps) => {
     const {open, handleClose, handleOpen} = props;
     const handleClickClose = () => {
         handleClose();
-        dispatch(authReducerActions.clearIsLoginFailed())
+        dispatch(authReducerActions.clearMessages())
     };
+
     return (
         <>
             <Hidden mdDown>

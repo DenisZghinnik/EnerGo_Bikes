@@ -15,7 +15,7 @@ const Menu = (props:WithOpenFuncProps) => {
     const {open, handleOpen, handleClose} = props;
     const handleClickClose = () => {
         handleClose();
-        dispatch(authReducerActions.clearIsLoginFailed())
+        dispatch(authReducerActions.clearMessages())
     };
 
     return (
@@ -28,7 +28,7 @@ const Menu = (props:WithOpenFuncProps) => {
 
             <Hidden lgUp>
                 <StyledIcon onClick={handleOpen}/>
-                
+
                 <Drawer anchor='left' open={open} onClose={handleClickClose}>
                     <MenuDrawerContent handleCloseDrawer={handleClickClose}/>
                 </Drawer>

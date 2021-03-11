@@ -24,7 +24,7 @@ class Category {
     subCategories
 }
 
-const bikesSubCategories = ['Kross', 'Riveld', 'Xtreme', 'Bomj', 'Energy'];
+const bikesSubCategories = ['Kross', 'Riveld', 'Xtreme', 'Tracer', 'Energy'];
 const bikes = new Category('bikes', '/bikes', bikesSubCategories);
 
 const kitsSubCategories = ['Relax', 'Active', 'Extreme'];

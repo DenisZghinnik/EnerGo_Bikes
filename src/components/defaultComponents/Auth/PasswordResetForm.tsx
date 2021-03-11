@@ -5,34 +5,40 @@ import {
     CssAdditionalButton,
     CssSubmitButton,
     formTitleIconStyle, textInputCreator
-} from "../../../defaultComponents/form_elements";
+} from "../form_elements";
 import { useFormik } from 'formik';
-import {emailValidation} from "../../../defaultComponents/form_validators";
-
-
+import {emailValidation} from "../form_validators";
+import {passwordResetRequest} from "../../../redux/reducers/authReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {getIsResetSent} from "../../../selectors/selectors";
+import { Alert } from '@material-ui/lab';
 
 type Props = {
     handleCloseReset:()=>void
     handleClose?:()=>void
+    isFetching: boolean
 };
 const PasswordResetForm = (props: Props) => {
-
+    const dispatch=useDispatch();
+    const isSent = useSelector(getIsResetSent);
     const formik = useFormik({
         initialValues: {
             email: '',
         },
         validationSchema: emailValidation,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(passwordResetRequest(values.email));
         },
     });
-
     return (
         <>
             <StyledFormTitle>
                 <StyledFormTitleIcon/>
                 reset your password
             </StyledFormTitle>
+            {isSent && <StyledAlert severity="success">
+                Please check your email and follow the instructions
+            </StyledAlert>}
             <StyledForm onSubmit={formik.handleSubmit}>
                  {textInputCreator('email',
                      true,
@@ -42,7 +48,7 @@ const PasswordResetForm = (props: Props) => {
                      formik.errors.email
                  )}
 
-                <CssSubmitButton type="submit" fullWidth variant="contained">
+                <CssSubmitButton disabled={props.isFetching} type="submit" fullWidth variant="contained">
                     submit
                 </CssSubmitButton>
                 <CssAdditionalButton onClick={props.handleCloseReset}>
@@ -52,7 +58,11 @@ const PasswordResetForm = (props: Props) => {
         </>
     );
 };
+
 export default React.memo(PasswordResetForm);
+const StyledAlert=styled(Alert)`&&{
+  font-size: 15px;
+}`
 const StyledForm = styled.form`
   text-align: center;
 `

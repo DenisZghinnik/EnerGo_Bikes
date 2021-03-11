@@ -27,6 +27,12 @@ export const authApi = {
     },
     logout () {
        return apiBase.delete(`auth/login`).then(resp=>resp.data)
-    }
+    },
+    resetPassword (email:string) {
+       return axios.put(`auth/password`, {email}).then(resp=>resp.data)
+    },
+    register (email:string, password:string) {
+       return axios.post(`auth/register`, {email,password}).then(resp=>resp.data)
+    },
 
 }

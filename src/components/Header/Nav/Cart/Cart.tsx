@@ -73,5 +73,5 @@ const StyledBadge = styled(Badge)`&&{
 }`
 const StyledCartIcon = styled(ShoppingCartIcon)`&&{
   ${navStyle};
-  font-size: 34px;
+  font-size: 25px;
 }`
