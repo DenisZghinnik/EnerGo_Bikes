@@ -2,6 +2,7 @@ import {Badge} from "@material-ui/core";
 import styled, {css} from "styled-components";
 
 const StyledBadge = css`&&{
+    padding-bottom: 4px;
     .MuiBadge-badge{
       color: #fff;
       border-radius: 0;

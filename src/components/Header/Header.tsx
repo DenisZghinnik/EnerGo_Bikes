@@ -4,11 +4,13 @@ import Logo from "./Logo/Logo";
 import {Container, Grid} from "@material-ui/core";
 import Menu from "./Menu/Menu";
 import Nav from "./Nav/Nav";
+import { AppBar } from '@material-ui/core';
 
 
 const Header = () => {
 
     return (
+        <AppBar color='inherit' position='sticky'>
         <Container maxWidth="xl">
             <HeaderContainer container justify='center'>
                 <Grid justify='flex-start' alignItems='center' container item xs>
@@ -22,6 +24,7 @@ const Header = () => {
                 </Grid>
             </HeaderContainer>
         </Container>
+            </AppBar>
     );
 };
 export default Header;
