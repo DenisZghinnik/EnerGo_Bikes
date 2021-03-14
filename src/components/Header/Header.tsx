@@ -11,20 +11,20 @@ const Header = () => {
 
     return (
         <AppBar color='inherit' position='sticky'>
-        <Container maxWidth="xl">
-            <HeaderContainer container justify='center'>
-                <Grid justify='flex-start' alignItems='center' container item xs>
-                    <Menu/>
-                </Grid>
-                <Grid justify='center' alignItems='center' container item xs>
-                    <Logo/>
-                </Grid>
-                <Grid justify='flex-end' container alignItems='center' item xs>
-                    <Nav/>
-                </Grid>
-            </HeaderContainer>
-        </Container>
-            </AppBar>
+            <Container maxWidth="xl">
+                <HeaderContainer container justify='center'>
+                    <Grid justify='flex-start' alignItems='center' container item xs>
+                        <Menu/>
+                    </Grid>
+                    <Grid justify='center' alignItems='center' container item xs>
+                        <Logo/>
+                    </Grid>
+                    <Grid justify='flex-end' container alignItems='center' item xs>
+                        <Nav/>
+                    </Grid>
+                </HeaderContainer>
+            </Container>
+        </AppBar>
     );
 };
 export default Header;
