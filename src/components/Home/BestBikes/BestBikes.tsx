@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import {homeSectionTitle} from "../../../css vars/homeSectionTItle";
 import {buttonMain2Style} from "../../../css vars/buttonStyle";
 import ProductItem from "../../defaultComponents/ProductItem";
-import img from '../../../img/products/products-item/pro37.jpg'
-import {Container} from "@material-ui/core";
-
+import {Container, Grid} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {getProductsList} from "../../../selectors/selectors";
 
 type Props = {};
 const BestBikes = (props: Props) => {
+    const productsList = useSelector(getProductsList).slice(0, 8);
     const [active, setActive] = React.useState(0);
     return (
         <StyledBestBikes>
@@ -27,17 +28,12 @@ const BestBikes = (props: Props) => {
                     top rates
                 </button>
             </div>
-            <Container maxWidth={'xl'}>
-                <ProductItem item={{
-                    img: img,
-                    name: 'Pulse Special Edition',
-                    stars: 3,
-                    discount: true,
-                    price: '450.00',
-                    discountPrice: '243.00',
-                    link: '/products/pulse-special-edition'
-                }}/>
+            <Container className='container' maxWidth={'xl'}>
+                <Grid container spacing={4}>
+                    {productsList.map((a:any,i:number)=><ProductItem key={i} item={a}/>)}
+                </Grid>
             </Container>
+
         </StyledBestBikes>
     );
 };
@@ -70,4 +66,10 @@ const StyledBestBikes = styled.div`
     border-color: #bdb099;
     color: #fff;
   }
+  @media (min-width: 1300px){
+    .container{
+      padding: 0 200px;
+    }
+  }
+  
 `

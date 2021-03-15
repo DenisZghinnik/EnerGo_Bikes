@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Grid, Theme, Tooltip, withStyles} from "@material-ui/core";
+import {Grid, Tooltip, withStyles} from "@material-ui/core";
 import { NavLink } from 'react-router-dom';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import {greyHover} from "../../css vars/colors";
-
-
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
 type Props = {
     item: {
         img: string,
@@ -20,7 +20,9 @@ type Props = {
     }
 };
 const ProductItem = (props: Props) => {
-    const {img,name,stars,discount,price,discountPrice, link} = props.item;
+    const {img, name, stars:starCount, discount, price, discountPrice, link} = props.item;
+    const stars = [...new Array(starCount).fill(true),...new Array(5-starCount).fill(false)]
+
     return (
         <Grid item lg={3} md={4} sm={6}>
             <StyledItem>
@@ -48,6 +50,21 @@ const ProductItem = (props: Props) => {
                             </button>
                         </StyledTooltip>
                     </div>
+
+                    {discount&&<div className="label-sale">
+                        <span>sale</span>
+                    </div>}
+                </div>
+                <div className="product-info">
+                    <h4><NavLink to={link}>{name}</NavLink></h4>
+                    <span>
+                        {stars.map((a,i)=>a?<StarIcon key={i}/>:<StarBorderIcon key={i}/>
+                        )}
+                    </span>
+                    {discount
+                            ? <p><s>${price}</s> ${discountPrice}</p>
+                            : <p>${price}</p>
+                    }
                 </div>
             </StyledItem>
         </Grid>
@@ -145,6 +162,60 @@ const StyledItem = styled.div`
         fill: #bdb099;
         height: auto;
         transition: .3s;
+      }
+    }
+  }
+  .label-sale{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(225deg, #741313 50%, transparent 50%);
+    span{
+      display: block;
+      color: #fff;
+      letter-spacing: 1px;
+      line-height: 22px;
+      padding: 5px 0 30px 0;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      transform: rotate(45deg);
+    }
+  }
+  .product-info{
+    padding: 0 20px;
+
+    h4 {
+      margin-top: 20px;
+      margin-bottom: 15px;
+      a {
+        font-size: 14px;
+        font-weight: 700;
+        color: #333333;
+        text-decoration: none;
+        &:hover{
+          color: ${greyHover};
+        }
+      }
+    }
+    span{
+      color: #bdb099;
+      svg{
+        font-size: 20px;
+      }
+    }
+
+    p {
+      margin-bottom: 25px;
+      font-weight: 600;
+      font-size: 17px;
+      color: #333333;
+      margin-top: 20px;
+      s{
+        font-size: 12px;
       }
     }
   }

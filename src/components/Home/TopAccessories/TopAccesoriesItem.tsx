@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {Grid} from "@material-ui/core";
 import { NavLink } from 'react-router-dom';
-import Nav from "../../Header/Nav/Nav";
 import {buttonMainStyle} from "../../../css vars/buttonStyle";
 
 type Props = {
