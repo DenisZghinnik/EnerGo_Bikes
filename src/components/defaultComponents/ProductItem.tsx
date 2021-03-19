@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Grid, Tooltip, withStyles} from "@material-ui/core";
+import {Tooltip, withStyles} from "@material-ui/core";
 import { NavLink } from 'react-router-dom';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
@@ -24,8 +24,7 @@ const ProductItem = (props: Props) => {
     const stars = [...new Array(starCount).fill(true),...new Array(5-starCount).fill(false)]
 
     return (
-        <Grid item lg={3} md={4} sm={6}>
-            <StyledItem>
+        <StyledItem>
                 <div className='product-img'>
                     <div className="img">
                         <NavLink to={link}>
@@ -67,7 +66,6 @@ const ProductItem = (props: Props) => {
                     }
                 </div>
             </StyledItem>
-        </Grid>
     );
 };
 export default React.memo(ProductItem);
@@ -85,6 +83,7 @@ const StyledItem = styled.div`
   overflow: hidden;
   border: 1px solid #ebebeb;
   position: relative;
+  width: 100%;
   &:hover{
     .img img{
       transform: scale(1.15);

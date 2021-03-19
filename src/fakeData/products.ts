@@ -1,15 +1,15 @@
-import pro12 from '../../img/products/products-item/pro12.jpg';
-import pro13 from '../../img/products/products-item/pro13.jpg';
-import pro16 from '../../img/products/products-item/pro16.jpg';
-import pro17 from '../../img/products/products-item/pro17.jpg';
-import pro22 from '../../img/products/products-item/pro22.jpg';
-import pro25 from '../../img/products/products-item/pro25.jpg';
-import pro26 from '../../img/products/products-item/pro26.jpg';
-import pro31 from '../../img/products/products-item/pro31.webp';
-import pro32 from '../../img/products/products-item/pro32.webp';
-import pro35 from '../../img/products/products-item/pro35.jpg';
-import pro36 from '../../img/products/products-item/pro36.webp';
-import pro37 from '../../img/products/products-item/pro37.jpg';
+import pro12 from '../img/products/products-item/pro12.jpg';
+import pro13 from '../img/products/products-item/pro13.jpg';
+import pro16 from '../img/products/products-item/pro16.jpg';
+import pro17 from '../img/products/products-item/pro17.jpg';
+import pro22 from '../img/products/products-item/pro22.jpg';
+import pro25 from '../img/products/products-item/pro25.jpg';
+import pro26 from '../img/products/products-item/pro26.jpg';
+import pro31 from '../img/products/products-item/pro31.webp';
+import pro32 from '../img/products/products-item/pro32.webp';
+import pro35 from '../img/products/products-item/pro35.jpg';
+import pro36 from '../img/products/products-item/pro36.webp';
+import pro37 from '../img/products/products-item/pro37.jpg';
 
 export const products = [
     {
@@ -19,7 +19,8 @@ export const products = [
         discount: true,
         price: '450.00',
         discountPrice: '243.00',
-        link: '/products/pulse-special-edition'
+        link: '/products/pulse-special-edition',
+        new: false
     },
     {
         img: pro13,
@@ -28,7 +29,8 @@ export const products = [
         discount: false,
         price: '630.00',
         discountPrice: '0',
-        link: '/products/trek-Go-1.0'
+        link: '/products/trek-Go-1.0',
+        new: true
     },
     {
         img: pro16,
@@ -37,7 +39,8 @@ export const products = [
         discount: false,
         price: '225.00',
         discountPrice: '0',
-        link: '/products/go-bike-fordable-electric'
+        link: '/products/go-bike-fordable-electric',
+        new: false
     },
     {
         img: pro17,
@@ -46,7 +49,8 @@ export const products = [
         discount: false,
         price: '99.00',
         discountPrice: '0',
-        link: '/products/electric-scooter'
+        link: '/products/electric-scooter',
+        new: true
     },
     {
         img: pro22,
@@ -55,7 +59,8 @@ export const products = [
         discount: false,
         price: '278.00',
         discountPrice: '0',
-        link: '/products/go-bike-q1-fordable-electric'
+        link: '/products/go-bike-q1-fordable-electric',
+        new: false
     },
     {
         img: pro25,
@@ -64,7 +69,8 @@ export const products = [
         discount: true,
         price: '750.00',
         discountPrice: '399.00',
-        link: '/products/reaction-hybrid-pro'
+        link: '/products/reaction-hybrid-pro',
+        new: true
     },
     {
         img: pro26,
@@ -73,7 +79,8 @@ export const products = [
         discount: false,
         price: '515.00',
         discountPrice: '0',
-        link: '/products/fast-folding-electric-bike'
+        link: '/products/fast-folding-electric-bike',
+        new: true
     },
     {
         img: pro31,
@@ -82,7 +89,8 @@ export const products = [
         discount: false,
         price: '315.00',
         discountPrice: '0',
-        link: '/products/mini-fordable-folding-light-weight'
+        link: '/products/mini-fordable-folding-light-weight',
+        new: false
     },
     {
         img: pro32,
@@ -91,7 +99,8 @@ export const products = [
         discount: false,
         price: '699.00',
         discountPrice: '0',
-        link: '/products/allant-8s-stagger'
+        link: '/products/allant-8s-stagger',
+        new: true
     },
     {
         img: pro35,
@@ -100,7 +109,8 @@ export const products = [
         discount: true,
         price: '400.00',
         discountPrice: '285.00',
-        link: '/products/7-speed-shimano-shifting-built'
+        link: '/products/7-speed-shimano-shifting-built',
+        new: false
     },
     {
         img: pro36,
@@ -109,7 +119,8 @@ export const products = [
         discount: false,
         price: '423.00',
         discountPrice: '',
-        link: '/products/full-feature-electric-cargo-bike'
+        link: '/products/full-feature-electric-cargo-bike',
+        new: true
     },
     {
         img: pro37,
@@ -118,7 +129,8 @@ export const products = [
         discount: false,
         price: '260.00',
         discountPrice: '',
-        link: '/products/comfortable-electric-cruiser-bike'
+        link: '/products/comfortable-electric-cruiser-bike',
+        new: false
     },
     {
         img: pro12,
@@ -127,7 +139,8 @@ export const products = [
         discount: false,
         price: '260.00',
         discountPrice: '',
-        link: '/products/comfortable-electric-cruiser-bike'
+        link: '/products/comfortable-electric-cruiser-bike',
+        new: true
     },
     {
         img: pro17,
@@ -136,7 +149,8 @@ export const products = [
         discount: false,
         price: '194.00',
         discountPrice: '',
-        link: '/products/vulcan-e-electric-bike'
+        link: '/products/vulcan-e-electric-bike',
+        new: false
     },
     {
         img: pro31,
@@ -145,7 +159,8 @@ export const products = [
         discount: false,
         price: '135.00',
         discountPrice: '',
-        link: '/products/pedal-assist-electric-bicycle'
+        link: '/products/pedal-assist-electric-bicycle',
+        new: true
     },
 
 ]

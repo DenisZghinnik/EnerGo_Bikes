@@ -2,7 +2,7 @@ import {buildAction, InferActionTypes} from "../../types/types";
 import {AnyAction} from "redux";
 import {Dispatch} from "react";
 import {authApi, ResultsCodes} from "../../api/api";
-import {products} from "./products";
+import {products} from "../../fakeData/products";
 
 
 export const ACTION_TYPE = 'app//ACTION_TYPE';
@@ -13,7 +13,8 @@ export type item = {
     discount: boolean,
     price: string,
     discountPrice: string,
-    link: string
+    link: string,
+    new:boolean
 }
 
 export type productsReducerState = {

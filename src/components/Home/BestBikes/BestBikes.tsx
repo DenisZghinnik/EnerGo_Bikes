@@ -30,7 +30,11 @@ const BestBikes = (props: Props) => {
             </div>
             <Container className='container' maxWidth={'xl'}>
                 <Grid container spacing={4}>
-                    {productsList.map((a:any,i:number)=><ProductItem key={i} item={a}/>)}
+                    {productsList.map((a:any,i:number)=>(
+                        <Grid key={i}  item lg={3} md={4} sm={6}>
+                            <ProductItem item={a}/>
+                        </Grid>
+                        ))}
                 </Grid>
             </Container>
 
