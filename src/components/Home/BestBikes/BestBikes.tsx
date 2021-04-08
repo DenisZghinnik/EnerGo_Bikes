@@ -9,8 +9,10 @@ import {getProductsList} from "../../../selectors/selectors";
 
 type Props = {};
 const BestBikes = (props: Props) => {
-    const productsList = useSelector(getProductsList).slice(0, 8);
+    let productsList = useSelector(getProductsList).slice(0, 8);
     const [active, setActive] = React.useState(0);
+    if(active===1) productsList = productsList.reverse();
+    if(active===2) productsList = productsList.sort();
     return (
         <StyledBestBikes>
             <div className='header-title'>
